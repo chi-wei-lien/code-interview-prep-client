@@ -1,0 +1,19 @@
+.navbar {
+    width: 250px;
+    height: 100vh;
+    background-color: #57534e;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-content {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.navbar-content h1 {
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+}
