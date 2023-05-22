@@ -32,5 +32,5 @@ export const separateByDate = (problemLogs: IProblemLog[]) => {
 
 export const formatDateTitle = (date: Date) => {
     date = new Date(date);
-    return date.getMonth() + "/" + date.getDate();
+    return date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate();
 }

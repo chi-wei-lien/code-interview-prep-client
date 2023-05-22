@@ -1,8 +1,8 @@
 
 export interface IProblemLog {
     id: Number,
-    name: String,
+    name: string,
     difficulty: 1.2,
-    url: String,
+    url: string,
     timestamp: Date
 }

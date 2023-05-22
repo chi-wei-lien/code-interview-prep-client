@@ -1,0 +1,24 @@
+.problems {
+    /* position: relative; */
+}
+
+.problem {
+}
+
+.new-problem {
+    list-style-type: circle;
+}
+
+.problem h1 {
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.problem ul li {
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.problem ul li p {
+    display: inline-block;
+}

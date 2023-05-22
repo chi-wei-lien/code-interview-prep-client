@@ -1,0 +1,106 @@
+.modal-frame {
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
+    width: -webkit-calc(100% - 250px);
+    width:    -moz-calc(100% - 250px);
+    width:         calc(100% - 250px);
+    display: flex;
+    justify-content: center;
+    background:rgba(0,0,0,0.6);
+}
+
+.modal {
+    padding: 5px 20px;
+    width: 600px;
+    height: 300px;
+    background: white;
+    position: fixed;
+    z-index: 20;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.create-problem-form-container {
+    width: 300px;
+}
+
+.create-problem-form {
+}
+
+.create-problem-form label input {
+    border-radius: 3px;
+    padding: 5px 5px;
+    margin-top: 5px;
+    border-width: 2px;
+    width: 100%;
+    width: -webkit-calc(100% - 14px);
+    width:    -moz-calc(100% - 14px);
+    width:         calc(100% - 14px);
+    border: 2px solid #d5d8dc;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.create-problem-form label input:focus {
+    outline: none;
+}
+
+.old-computer-frame {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.old-computer-container {
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.old-computer-img {
+    width: 150px;
+    height: auto;
+}
+
+.old-computer-container p {
+    color: #808b96;
+    font-size: 15px;
+}
+
+.form-submit-frame {
+    display: flex;
+}
+
+/* .form-submit-cancel-button {
+    margin: 4px;
+    background-color: #bfc9ca;
+    padding: 2px 4px;
+    width: 50%;
+} */
+
+.form-submit-button {
+    background-color: transparent;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    margin: 4px;
+    margin-top: 15px;
+    padding: 2px 4px;
+    width: 50%;
+    cursor: pointer;
+    outline: none;
+    padding: 8px 8px;
+    font-family: 'Roboto Mono', monospace;
+    transition: all 300ms cubic-bezier(.25, 1, 0.35, 1);
+}
+
+.form-submit-button:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
