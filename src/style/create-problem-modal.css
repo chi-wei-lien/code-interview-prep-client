@@ -2,18 +2,16 @@
     position: fixed;
     height: 100vh;
     z-index: 10;
-    width: -webkit-calc(100% - 250px);
-    width:    -moz-calc(100% - 250px);
-    width:         calc(100% - 250px);
+    width: 100%;
+    
     display: flex;
     justify-content: center;
     background:rgba(0,0,0,0.6);
 }
 
 .modal {
-    padding: 5px 20px;
-    width: 600px;
-    height: 300px;
+    padding: 20px 20px;
+    width: 80%;
     background: white;
     position: fixed;
     z-index: 20;
@@ -23,6 +21,27 @@
     display: flex;
     justify-content: center;
 }
+
+.modal h1 {
+    margin: 0;
+}
+
+@media only screen and (min-width: 700px) {
+    .modal-frame {
+        width: -webkit-calc(100% - 250px);
+        width:    -moz-calc(100% - 250px);
+        width:         calc(100% - 250px);
+    }
+
+    .modal {
+        width: -webkit-calc(80% - 250px);
+        width:    -moz-calc(80% - 250px);
+        width:         calc(80% - 250px);
+        max-width: 600px;
+    }
+}
+
+
 
 .create-problem-form-container {
     width: 300px;
