@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import '../style/create-problem-modal.css'
 import { IProblemLog } from "../interfaces/problem-log";
-import { createProblemLog } from '../services/problem-log';
+import { deleteProblemLogs, editProblemLog } from '../services/problem-log';
+import EditProblemLogState from '../states/edit-problem-log-state';
 
 interface ICreateProblemModalProps {
-    setShowCreateProblemModal: React.Dispatch<React.SetStateAction<boolean>>;
+    setShowEditProblemModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CreateProblemModal = (props: ICreateProblemModalProps) => {
-    const [problemName, setProblemName] = useState("");
-    const [problemUrl, setProblemUrl] = useState("");
-    const [problemDifficulty, setProblemDifficulty] = useState("");
+const EditProblemModal = (props: ICreateProblemModalProps) => {
+    const [problemName, setProblemName] = useState(EditProblemLogState.getProblemName());
+    const [problemUrl, setProblemUrl] = useState(EditProblemLogState.getProblemUrl());
+    const [problemDifficulty, setProblemDifficulty] = useState(EditProblemLogState.getProblemDifficulty() + "");
     const [submitButtonText, setSubmitButtonText] = useState("Done");
     const [errorText, setErrorText] = useState("");
 
-    const handleSubmit= async(e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const handleSubmit = async() => {
         const newProblemLog: IProblemLog = {
-            id: -1,
+            id: EditProblemLogState.getProblemId(),
             name: problemName,
             url: problemUrl,
             difficulty: Number(problemDifficulty),
@@ -25,13 +25,28 @@ const CreateProblemModal = (props: ICreateProblemModalProps) => {
         }
 
         setSubmitButtonText("Submitting")
-        if (await createProblemLog(newProblemLog)) {
+        if (await editProblemLog(newProblemLog)) {
             setSubmitButtonText("Done");
             setProblemName("");
             setProblemUrl("");
             setProblemDifficulty("");
             setErrorText("");
-            props.setShowCreateProblemModal(false);
+            props.setShowEditProblemModal(false);
+        }
+        else {
+            setSubmitButtonText("Done");
+            setErrorText("Oops! Something went wrong. Please try again later")
+        }
+    }
+
+    const handleDelete = async () => {
+        if (await deleteProblemLogs(EditProblemLogState.getProblemId())) {
+            setSubmitButtonText("Done");
+            setProblemName("");
+            setProblemUrl("");
+            setProblemDifficulty("");
+            setErrorText("");
+            props.setShowEditProblemModal(false);
         }
         else {
             setSubmitButtonText("Done");
@@ -43,8 +58,8 @@ const CreateProblemModal = (props: ICreateProblemModalProps) => {
         <div className="modal-frame">
             <div className="modal">
                 <div className="create-problem-form-container">
-                    <h1>Add Problem</h1>
-                    <form className="create-problem-form" onSubmit={e => {handleSubmit(e)}}>
+                    <h1>Edit Problem</h1>
+                    <form className="create-problem-form">
                         <label>
                             <input placeholder="Problem Name" 
                                     onChange={(e) => {setProblemName(e.target.value)}}
@@ -72,12 +87,17 @@ const CreateProblemModal = (props: ICreateProblemModalProps) => {
                         </label>
                         <div className="create-problem-error">{errorText}</div>
                         <div className="form-submit-frame">
-                            <button onClick={() => props.setShowCreateProblemModal(false)} 
+                            <button onClick={() => handleDelete()} 
+                                    className="form-button">
+                                Remove
+                            </button>
+                            <button onClick={() => props.setShowEditProblemModal(false)} 
                                     className="form-button">
                                 Cancel
                             </button>
                             <input className="form-button" 
-                                type='submit' value={submitButtonText}>
+                                    value={submitButtonText}
+                                    onClick={() => handleSubmit()}>
                             </input>
                         </div>
                     </form>
@@ -85,7 +105,7 @@ const CreateProblemModal = (props: ICreateProblemModalProps) => {
                 <div className="old-computer-frame">
                     <div className="old-computer-container">
                         <img className="old-computer-img" src="/images/old_computer.png"></img>
-                        <p>"Nice you just solved another problem!"</p>
+                        <p>"Entered something wrong? You can fix it here!"</p>
                     </div>
                 </div>
             </div>
@@ -93,4 +113,4 @@ const CreateProblemModal = (props: ICreateProblemModalProps) => {
     )
 }
 
-export default CreateProblemModal;
+export default EditProblemModal;

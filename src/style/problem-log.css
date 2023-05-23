@@ -17,6 +17,7 @@
 .problem ul li {
     font-size: 20px;
     text-transform: capitalize;
+    cursor: pointer;
 }
 
 .problem ul li p {
@@ -29,7 +30,7 @@
     font-size: 13px;
     border-radius: 9999px;
     background-color: #f4d03f;
-    padding: 5px 10px;
+    padding: 2px 10px;
 }
 
 /* Mostly copied from https://www.w3schools.com/css/css_tooltip.asp */

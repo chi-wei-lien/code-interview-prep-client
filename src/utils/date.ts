@@ -13,6 +13,7 @@ export const compareDate = (dateA: Date, dateB: Date) => {
 }
 
 export const separateByDate = (problemLogs: IProblemLog[]) => {
+    if (problemLogs.length == 0) return [];
     let res: IProblemLog[][] = [];
     res.push([problemLogs[0]]);
     let prev = problemLogs[0];

@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/navbar';
 import ProblemLog from './components/problem-log';
 import CreateProblemModal from './components/create-problem-modal';
+import EditProblemModal from './components/edit-problem-modal';
 import { useEffect, useState } from 'react';
 import NavbarMobile from './components/navbar-mobile';
 
@@ -9,6 +10,7 @@ const MIN_DESKTOP_SIZE = 700;
 
 function App() {
     const [showCreateProblemModal, setShowCreateProblemModal] = useState(false);
+    const [showEditProblemModal, setShowEditProblemModal] = useState(false);
     const [isDesktop, setDesktop] = useState(window.innerWidth > MIN_DESKTOP_SIZE);
 
     const updateMedia = () => {
@@ -26,8 +28,12 @@ function App() {
                 <Navbar />
                 <div className="main-frame">
                     { showCreateProblemModal ? <CreateProblemModal setShowCreateProblemModal={setShowCreateProblemModal} /> : null}
+                    { showEditProblemModal ? <EditProblemModal setShowEditProblemModal={setShowEditProblemModal} /> : null}
                     <div className='main-frame-content'>
-                        <ProblemLog setShowCreateProblemModal={setShowCreateProblemModal}/>
+                        <ProblemLog showCreateProblemModal={showCreateProblemModal}
+                                showEditProblemModal={showEditProblemModal}
+                                setShowCreateProblemModal={setShowCreateProblemModal} 
+                                setShowEditProblemModal={setShowEditProblemModal}/>
                     </div>
                 </div>
             </div>
@@ -39,8 +45,12 @@ function App() {
             <NavbarMobile />
             <div className="main-mobile-frame">
                 { showCreateProblemModal ? <CreateProblemModal setShowCreateProblemModal={setShowCreateProblemModal} /> : null}
+                { showEditProblemModal ? <EditProblemModal setShowEditProblemModal={setShowEditProblemModal} /> : null}
                 <div className='main-mobile-frame-content'>
-                    <ProblemLog setShowCreateProblemModal={setShowCreateProblemModal}/>
+                    <ProblemLog showCreateProblemModal={showCreateProblemModal}
+                            showEditProblemModal={showEditProblemModal}
+                            setShowCreateProblemModal={setShowCreateProblemModal} 
+                            setShowEditProblemModal={setShowEditProblemModal}/>
                 </div>
             </div>
         </div>
