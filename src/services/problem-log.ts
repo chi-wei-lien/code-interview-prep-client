@@ -18,3 +18,27 @@ export const fetchProblemLogs = (page: number, size: number) => {
         })
     }})
 }
+
+export const createProblemLog = (newProblemLog: IProblemLog) => {
+    return new Promise<Boolean>((resolve, reject) => {
+        fetch(`${process.env.REACT_APP_API}/problemlog`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newProblemLog)
+        }).then((res) => {
+            if (res.status == 201) {
+                resolve(true);
+            }
+            else {
+                resolve(false);
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            resolve(false);
+        })
+    })
+}

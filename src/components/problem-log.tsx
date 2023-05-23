@@ -22,7 +22,14 @@ const ProblemLog = (props: IProblemLogProps) => {
             const separated = separateByDate(res)
             setProblemLogs(separated);
             if (compareDate(today, separated[0][0].timestamp)) {
-                setNewProblemLog(<div>hi</div>);
+                setNewProblemLog(
+                    <div className="problem">
+                        <ul>
+                            <li className="new-problem"><a href="#" onClick={() => props.setShowCreateProblemModal(true)}>
+                                Add Question</a>
+                            </li>
+                        </ul>
+                    </div>);
                 setFirstQuestionToday(false);
             }
         })
@@ -60,10 +67,10 @@ const ProblemLog = (props: IProblemLogProps) => {
                                     <li key={problemLog.id as React.Key}>
                                         <p>{problemLog.name} (<a href={problemLog.url} target="_blank">URL</a>)</p>
                                         
-                                        <span className="difficulty tooltip">
-                                            {problemLog.difficulty}
+                                        <div className="difficulty tooltip">
+                                            <span>{problemLog.difficulty + ""}</span>
                                             <span className="tooltiptext">Difficulty</span>
-                                        </span>
+                                        </div>
                                     </li>
                                 )
                             }) }

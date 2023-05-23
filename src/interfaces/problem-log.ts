@@ -1,8 +1,8 @@
 
 export interface IProblemLog {
-    id: Number,
+    id: Number | undefined,
     name: string,
-    difficulty: 1.2,
+    difficulty: Number,
     url: string,
     timestamp: Date
 }

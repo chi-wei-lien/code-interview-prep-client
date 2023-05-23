@@ -67,6 +67,11 @@
     outline: none;
 }
 
+.create-problem-error {
+    color: red;
+    margin-top: 10px;
+}
+
 .old-computer-frame {
     width: 300px;
     display: flex;
